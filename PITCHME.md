@@ -6,9 +6,9 @@ Railway Oriented programming - это такой паттерн проектир
 - можо добавить дополнительную логику к результату операции
 - позволяет написать вызове методов по цепочке
  
-![Flux Explained](https://drive.google.com/file/d/10RpKb1WyKJr01rnQH1BMvJUYIXgQEKse/view?usp=sharing)
-![Flux Explained](https://drive.google.com/file/d/1I1oT-4xc__NzBkne4wWHWsdP5KXPaPEF/view?usp=sharing)
-![Flux Explained](https://drive.google.com/file/d/10RpKb1WyKJr01rnQH1BMvJUYIXgQEKse/view?usp=sharing)
+![Flux Explained](https://zohaib.me/content/images/2015/03/Screenshot-2015-03-23-01-12-31.png)
+![Flux Explained](https://zohaib.me/content/images/2015/03/Screenshot-2015-03-23-01-12-38.png)
+![Flux Explained](https://zohaib.me/content/images/2015/03/Screenshot-2015-03-23-01-12-45.png)
 
  
 #HSLIDE
