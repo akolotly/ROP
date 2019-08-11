@@ -1,4 +1,4 @@
-@size[size-value](your-content)
+@size[font-size]
 ### Railway Oriented programming
 
 Railway Oriented programming - это такой паттерн проектирования, при котором во время выполнения нашей программы мы особым образом обрабатываем ошибки.
