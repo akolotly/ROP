@@ -210,14 +210,8 @@ end
 
 ```
 class RailwayOnResultType
-  attr_accessor :arg
-
-  def initialize(arg)
-    @arg = arg
-  end
-
-  def call
-    Result.success(5).
+  def call(arg)
+    Result.success(arg).
       call(&method(:validate)).
       call(&method(:calculate)).
       call(&method(:persist))
@@ -233,13 +227,13 @@ class RailwayOnResultType
     Success.new(arg)
   end
 
-  def calculate
+  def calculate(arg)
     Success.new(100 / arg)
   rescue
     Failure.new('calculation error')
   end
 
-  def persist
+  def persist(arg)
     return Failure.new('persisting error') if arg.negative?
 
     db.save(arg)
