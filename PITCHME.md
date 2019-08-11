@@ -72,7 +72,7 @@ def call_process
     render(:error_500)
   end
 end
-```
+``` 
 #HSLIDE
 ### ROP стиль с исключениями
 
