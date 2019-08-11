@@ -1,7 +1,5 @@
-### Railway Oriented programming
----
-
 @size[size-value](your-content)
+### Railway Oriented programming
 
 Railway Oriented programming - это такой паттерн проектирования, при котором во время выполнения нашей программы мы особым образом обрабатываем ошибки.
 При Railway Oriented programming:
