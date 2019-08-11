@@ -276,7 +276,7 @@ end
 ```
 # Вызов
 def call_process
-  @result = RailwayOnResultType.new(params[:input]).call
+  @result = RailwayOnResultType.call(params[:input])
 
   if result.is_a?(Success)
     render(:page)
