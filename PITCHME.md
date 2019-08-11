@@ -1,6 +1,6 @@
-@size[x-small](### Railway Oriented programming
+@size[x-small](### Railway Oriented programming)
 
-Railway Oriented programming - это такой паттерн проектирования, при котором во время выполнения нашей программы мы особым образом обрабатываем ошибки.
+@size[x-small](Railway Oriented programming - это такой паттерн проектирования, при котором во время выполнения нашей программы мы особым образом обрабатываем ошибки.
 При Railway Oriented programming:
 - решаем проблему множественных if\else
 - можо добавить дополнительную логику к результату операции
