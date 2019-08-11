@@ -349,3 +349,6 @@ MyOperation.new.call(...)
 - https://medium.com/@baweaver/functional-programming-in-ruby-flow-control-565bbdcdf2a2
 - https://www.morozov.is/2018/05/27/do-notation-ruby.html
 - https://fsharpforfunandprofit.com/rop/?source=post_page-----565bbdcdf2a2----------------------
+
+#HSLIDE
+![Flux Explained](https://sun9-7.userapi.com/c857724/v857724536/41222/pT9EmNI0Gfw.jpg)
