@@ -61,6 +61,7 @@ end
 ```
 #HSLIDE  
 ```
+# Вызов
 def call_process
   @result = NotRailway.new(params[:input]).call
 
@@ -74,7 +75,7 @@ end
 ```
 #HSLIDE
 ### ROP стиль с исключениями
-Проблемы
+- Проблемы
 - эксепшены используются для обработки бизнес логики (подменяем понятие exception)
 - дополнительная сложность при добавлении кастомного исключения
 
@@ -92,6 +93,7 @@ class RailwayOnExceptions
     persist
     true
   end
+  ...
 ```
 #HSLIDE  
 ```
@@ -121,6 +123,7 @@ end
 ```
 #HSLIDE  
 ```
+# Вызов
 def call_process
   @result = RailwayOnExceptions.new(params[:input]).call
   render(:page)
@@ -135,7 +138,7 @@ end
 
 ### ROP стиль с использование аккумулятора 
 
-Проблемы
+- Проблемы
 - отсутсвие единого интерфеса ответов
 
 ```
@@ -186,6 +189,7 @@ end
 ```
 #HSLIDE  
 ```
+# Вызов
 def call_process
   @result = RailwayOnAccumulator.new(params[:input]).call
 
@@ -202,7 +206,7 @@ end
 
 ### ROP стиль с использованием объекта Result
 
-Проблемы
+- Проблемы
 - страшное нововведение и упоминание монад
 
 ```
@@ -219,6 +223,7 @@ class RailwayOnResultType
       call(&method(:calculate)).
       call(&method(:persist))
   end
+  ...
 ```
 #HSLIDE  
 ```
@@ -258,7 +263,9 @@ class Result
     def failure(error_message) Failure.new(error_message) end
   end
 end
-
+```
+#HSLIDE  
+```
 class Success < Result
   def call(&fn)
     fn.call(@value)
@@ -274,6 +281,7 @@ end
 ```
 #HSLIDE  
 ```
+# Вызов
 def call_process
   @result = RailwayOnResultType.new(params[:input]).call
 
@@ -290,14 +298,11 @@ end
 
 ### ROP стиль с библиотеками dry
 
-Проблемы
+-Проблемы
 - библиотеку новые и не факт, что их не забросят и они не начнут тянуть ваш проект назад
 - опять страшное слово монады
 
-используем 
-- Dry::Transaction
-- Dry::Monads
-- Dry::Monads::Do
+- используем Dry::Transaction, Dry::Monads, Dry::Monads::Do
 
 ```
 class MyOperation
@@ -307,6 +312,8 @@ class MyOperation
   step :validate
   step :log
   step :persist
+  ...
+  
 ```
 #HSLIDE  
 ```
@@ -335,6 +342,7 @@ end
 ```
 #HSLIDE  
 ```
+# Вызов
 MyOperation.new.call(...)
 # ^ can return either
 # Success(name: ..., age: ...)
