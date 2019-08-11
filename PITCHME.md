@@ -34,7 +34,10 @@ class NotRailway
 
     true
   end
-  
+  ...
+```
+  #HSLIDE  
+```
   private
 
   def validate
@@ -55,7 +58,9 @@ class NotRailway
     true
   end
 end
-
+```
+  #HSLIDE  
+```
 def call_process
   @result = NotRailway.new(params[:input]).call
 
@@ -67,9 +72,7 @@ def call_process
   end
 end
 ```
-
 #HSLIDE
-
 ### ROP стиль с исключениями
 
 Проблемы
@@ -90,7 +93,9 @@ class RailwayOnExceptions
     persist
     true
   end
-
+```
+  #HSLIDE  
+```
   private
 
   def validate
@@ -114,7 +119,9 @@ class RailwayOnExceptions
   class MyError < StandardError
   end
 end
-
+```
+  #HSLIDE  
+```
 def call_process
   @result = RailwayOnExceptions.new(params[:input]).call
   render(:page)
@@ -125,7 +132,6 @@ rescue StandardError => e
   render(:error_500)
 end
 ```
-
 #HSLIDE
 
 ### ROP стиль с использование аккумулятора 
@@ -154,7 +160,9 @@ class RailwayOnAccumulator
     return true if result.empty?
     result
   end
-
+```
+  #HSLIDE  
+```
   private
 
   def validate
@@ -176,7 +184,9 @@ class RailwayOnAccumulator
     ''
   end
 end
-
+```
+  #HSLIDE  
+```
 def call_process
   @result = RailwayOnAccumulator.new(params[:input]).call
 
@@ -210,7 +220,9 @@ class RailwayOnResultType
       call(&method(:calculate)).
       call(&method(:persist))
   end
-
+```
+  #HSLIDE  
+```
   private
 
   def validate(arg)
@@ -232,7 +244,9 @@ class RailwayOnResultType
     Success.new(arg)
   end
 end
-
+```
+  #HSLIDE  
+```
 class Result
   attr_reader :value
 
@@ -258,7 +272,9 @@ class Failure < Result
     self
   end
 end
-
+```
+  #HSLIDE  
+```
 def call_process
   @result = RailwayOnResultType.new(params[:input]).call
 
@@ -292,7 +308,9 @@ class MyOperation
   step :validate
   step :log
   step :persist
-
+```
+  #HSLIDE  
+```
   def validate(data)
     if data.valid?
       Success(name: data.name, age: data.user_age)
@@ -315,6 +333,9 @@ class MyOperation
   end
 end
 
+```
+  #HSLIDE  
+```
 MyOperation.new.call(...)
 # ^ can return either
 # Success(name: ..., age: ...)
