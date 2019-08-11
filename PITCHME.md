@@ -1,5 +1,4 @@
 ### Railway Oriented programming
-
 Railway Oriented programming - это такой паттерн проектирования, при котором во время выполнения нашей программы мы особым образом обрабатываем ошибки.
 При Railway Oriented programming:
 - решаем проблему множественных if\else
@@ -7,12 +6,10 @@ Railway Oriented programming - это такой паттерн проектир
 - позволяет написать вызове методов по цепочке
 
 #HSLIDE
-
 ![Flux Explained](https://zohaib.me/content/images/2015/03/Screenshot-2015-03-23-01-12-31.png)
 ![Flux Explained](https://zohaib.me/content/images/2015/03/Screenshot-2015-03-23-01-12-38.png)
 ![Flux Explained](https://zohaib.me/content/images/2015/03/Screenshot-2015-03-23-01-12-45.png)
 
-#
 #HSLIDE
 
 ### Не ROP стиль
