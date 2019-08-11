@@ -6,12 +6,11 @@ Railway Oriented programming - это такой паттерн проектир
 - позволяет написать вызове методов по цепочке
 
 #HSLIDE
-![Flux Explained](https://zohaib.me/content/images/2015/03/Screenshot-2015-03-23-01-12-31.png&size=50% 50%)
+![Flux Explained](https://zohaib.me/content/images/2015/03/Screenshot-2015-03-23-01-12-31.png)
 ![Flux Explained](https://zohaib.me/content/images/2015/03/Screenshot-2015-03-23-01-12-38.png)
 ![Flux Explained](https://zohaib.me/content/images/2015/03/Screenshot-2015-03-23-01-12-45.png)
 
 #HSLIDE
-
 ### Не ROP стиль
 Проблемы
 - Сложная обработка каждого шага (много if\else)
@@ -35,7 +34,9 @@ class NotRailway
 
     true
   end
-
+```
+#HSLIDE
+```
   private
 
   def validate
