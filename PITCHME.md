@@ -1,9 +1,9 @@
 ### Railway Oriented programming
 Railway Oriented programming - это такой паттерн проектирования, при котором во время выполнения нашей программы мы особым образом обрабатываем ошибки.
 При Railway Oriented programming:
-- решаем проблему множественных if\else
-- можо добавить дополнительную логику к результату операции
-- позволяет написать вызове методов по цепочке
+- решаем проблему множественных if\else (позволяет написать вызов методов по цепочке)
+- позволяет вставить дополнительную логику к результату каждого шага
+
 
 #HSLIDE
 ![Flux Explained](https://zohaib.me/content/images/2015/03/Screenshot-2015-03-23-01-12-31.png)
@@ -12,8 +12,6 @@ Railway Oriented programming - это такой паттерн проектир
 
 #HSLIDE
 ### Не ROP стиль
-Проблемы
-- Сложная обработка каждого шага (много if\else)
 ```
 class NotRailway
   attr_accessor :arg
@@ -59,7 +57,9 @@ class NotRailway
   end
 end
 ```
-#HSLIDE  
+#HSLIDE 
+Проблемы
+- Сложная обработка каждого шага (много if\else)
 ```
 # Вызов
 def call_process
@@ -75,9 +75,6 @@ end
 ```
 #HSLIDE
 ### ROP стиль с исключениями
-- Проблемы
-- эксепшены используются для обработки бизнес логики (подменяем понятие exception)
-- дополнительная сложность при добавлении кастомного исключения
 
 ```
 class RailwayOnExceptions
@@ -102,17 +99,17 @@ class RailwayOnExceptions
   def validate
     return if arg.is_a?(Integer)
 
-    raise 'validation error'
+    raise(MyError, 'validation error')
   end
 
   def calculate
     @arg = 100 / arg
   rescue
-    raise 'calculation error'
+    raise(MyError, 'calculation error')
   end
 
   def persist
-    raise 'persisting error' if arg.negative?
+    raise(MyError, 'persisting error') if arg.negative?
 
     db.save(arg)
   end
@@ -121,7 +118,10 @@ class RailwayOnExceptions
   end
 end
 ```
-#HSLIDE  
+#HSLIDE
+Проблемы
+- эксепшены используются для обработки бизнес логики (подменяем понятие exception)
+- дополнительная сложность при добавлении кастомного исключения
 ```
 # Вызов
 def call_process
@@ -137,9 +137,6 @@ end
 #HSLIDE
 
 ### ROP стиль с использование аккумулятора 
-
-- Проблемы
-- отсутсвие единого интерфеса ответов
 
 ```
 class RailwayOnAccumulator
@@ -187,7 +184,9 @@ class RailwayOnAccumulator
   end
 end
 ```
-#HSLIDE  
+#HSLIDE
+Проблемы
+- отсутсвие единого интерфеса ответов
 ```
 # Вызов
 def call_process
@@ -301,7 +300,6 @@ end
 - Проблемы
 - библиотеку новые и не факт, что их не забросят и они не начнут тянуть ваш проект назад
 - опять страшное слово монады
-
 Используем Dry::Transaction, Dry::Monads, Dry::Monads::Do
 
 ```
