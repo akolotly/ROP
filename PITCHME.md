@@ -63,7 +63,7 @@ end
 ```ruby
 # Вызов
 def call_process
-  @result = NotRailway.new(params[:input]).call
+  @result = NotRailway.new(params[:input]).call 
 
   if @result == true
     render(:page)
