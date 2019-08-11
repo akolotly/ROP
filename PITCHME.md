@@ -12,7 +12,7 @@ Railway Oriented programming - это такой паттерн проектир
 
 #HSLIDE
 ### Не ROP стиль
-```
+```ruby
 class NotRailway
   attr_accessor :arg
 
@@ -35,7 +35,7 @@ class NotRailway
   ...
 ```
 #HSLIDE  
-```
+```ruby
   private
 
   def validate
@@ -60,7 +60,7 @@ end
 #HSLIDE 
 Проблемы
 - Сложная обработка каждого шага (много if\else)
-```
+```ruby
 # Вызов
 def call_process
   @result = NotRailway.new(params[:input]).call
@@ -76,7 +76,7 @@ end
 #HSLIDE
 ### ROP стиль с исключениями
 
-```
+```ruby
 class RailwayOnExceptions
   attr_accessor :arg
 
@@ -93,7 +93,7 @@ class RailwayOnExceptions
   ...
 ```
 #HSLIDE  
-```
+```ruby
   private
 
   def validate
@@ -122,7 +122,7 @@ end
 Проблемы
 - эксепшены используются для обработки бизнес-логики (подменяем понятие exception)
 - дополнительная сложность при добавлении кастомного исключения
-```
+```ruby
 # Вызов
 def call_process
   @result = RailwayOnExceptions.new(params[:input]).call
@@ -138,7 +138,7 @@ end
 
 ### ROP стиль с использование аккумулятора 
 
-```
+```ruby
 class RailwayOnAccumulator
   attr_accessor :arg
 
@@ -161,7 +161,7 @@ class RailwayOnAccumulator
   end
 ```
 #HSLIDE  
-```
+```ruby
   private
 
   def validate
@@ -187,7 +187,7 @@ end
 #HSLIDE
 Проблемы
 - отсутсвие единого интерфеса ответов
-```
+```ruby
 # Вызов
 def call_process
   @result = RailwayOnAccumulator.new(params[:input]).call
@@ -208,7 +208,7 @@ end
 Проблемы
 - страшное нововведение
 
-```
+```ruby
 class RailwayOnResultType
   def call(arg)
     Result.success(arg).
@@ -219,7 +219,7 @@ class RailwayOnResultType
   ...
 ```
 #HSLIDE  
-```
+```ruby
   private
 
   def validate(arg)
@@ -243,7 +243,7 @@ class RailwayOnResultType
 end
 ```
 #HSLIDE  
-```
+```ruby
 class Result
   attr_reader :value
 
@@ -258,7 +258,7 @@ class Result
 end
 ```
 #HSLIDE  
-```
+```ruby
 class Success < Result
   def call(&fn)
     fn.call(@value)
@@ -273,7 +273,7 @@ class Failure < Result
 end
 ```
 #HSLIDE  
-```
+```ruby
 # Вызов
 def call_process
   @result = RailwayOnResultType.call(params[:input])
@@ -296,7 +296,7 @@ end
 - опять страшное слово монады
 Используем Dry::Transaction, Dry::Monads, Dry::Monads::Do
 
-```
+```ruby
 class MyOperation
   include Dry::Transaction
   include Dry::Monads
@@ -308,7 +308,7 @@ class MyOperation
   
 ```
 #HSLIDE  
-```
+```ruby
   def validate(data)
     if data.valid?
       Success(name: data.name, age: data.user_age)
@@ -333,7 +333,7 @@ end
 
 ```
 #HSLIDE  
-```
+```ruby
 # Вызов
 MyOperation.new.call(...)
 # ^ can return either
