@@ -34,9 +34,7 @@ class NotRailway
 
     true
   end
-```
-#HSLIDE
-```
+  
   private
 
   def validate
