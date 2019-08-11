@@ -298,11 +298,11 @@ end
 
 ### ROP стиль с библиотеками dry
 
--Проблемы
+- Проблемы
 - библиотеку новые и не факт, что их не забросят и они не начнут тянуть ваш проект назад
 - опять страшное слово монады
 
-- используем Dry::Transaction, Dry::Monads, Dry::Monads::Do
+Используем Dry::Transaction, Dry::Monads, Dry::Monads::Do
 
 ```
 class MyOperation
