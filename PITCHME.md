@@ -36,7 +36,7 @@ class NotRailway
   end
   ...
 ```
-  #HSLIDE  
+#HSLIDE  
 ```
   private
 
@@ -59,7 +59,7 @@ class NotRailway
   end
 end
 ```
-  #HSLIDE  
+#HSLIDE  
 ```
 def call_process
   @result = NotRailway.new(params[:input]).call
@@ -74,7 +74,6 @@ end
 ```
 #HSLIDE
 ### ROP стиль с исключениями
-
 Проблемы
 - эксепшены используются для обработки бизнес логики (подменяем понятие exception)
 - дополнительная сложность при добавлении кастомного исключения
@@ -94,7 +93,7 @@ class RailwayOnExceptions
     true
   end
 ```
-  #HSLIDE  
+#HSLIDE  
 ```
   private
 
@@ -120,7 +119,7 @@ class RailwayOnExceptions
   end
 end
 ```
-  #HSLIDE  
+#HSLIDE  
 ```
 def call_process
   @result = RailwayOnExceptions.new(params[:input]).call
@@ -161,7 +160,7 @@ class RailwayOnAccumulator
     result
   end
 ```
-  #HSLIDE  
+#HSLIDE  
 ```
   private
 
@@ -185,7 +184,7 @@ class RailwayOnAccumulator
   end
 end
 ```
-  #HSLIDE  
+#HSLIDE  
 ```
 def call_process
   @result = RailwayOnAccumulator.new(params[:input]).call
@@ -221,7 +220,7 @@ class RailwayOnResultType
       call(&method(:persist))
   end
 ```
-  #HSLIDE  
+#HSLIDE  
 ```
   private
 
@@ -245,7 +244,7 @@ class RailwayOnResultType
   end
 end
 ```
-  #HSLIDE  
+#HSLIDE  
 ```
 class Result
   attr_reader :value
@@ -273,7 +272,7 @@ class Failure < Result
   end
 end
 ```
-  #HSLIDE  
+#HSLIDE  
 ```
 def call_process
   @result = RailwayOnResultType.new(params[:input]).call
@@ -309,7 +308,7 @@ class MyOperation
   step :log
   step :persist
 ```
-  #HSLIDE  
+#HSLIDE  
 ```
   def validate(data)
     if data.valid?
@@ -334,7 +333,7 @@ class MyOperation
 end
 
 ```
-  #HSLIDE  
+#HSLIDE  
 ```
 MyOperation.new.call(...)
 # ^ can return either
